@@ -1,0 +1,18 @@
+module "tags_sql" {
+  source        = "../modules/tags"
+  environment   = "homologacao"
+  owner         = "time-hml"
+  resource_name = "sqlsrv"
+}
+
+module "sql" {
+  source              = "../modules/sql"
+  sql_server_name     = "hml-sqlsrv"
+  sql_database_name   = "hml-sqldb"
+  resource_group_name = "hml-rg"
+  location            = "brazilsouth"
+  administrator_login = "hmladmin"
+  sku_name            = "S1"
+  tags                = module.tags_sql.tags
+}
+

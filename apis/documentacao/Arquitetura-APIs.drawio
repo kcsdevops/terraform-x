@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2025-08-15T15:45:00.000Z" agent="5.0" etag="api-arch" version="21.6.5" type="device">
+  <diagram name="Arquitetura-APIs" id="api-arch">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Title -->
+        <mxCell id="title" value="🌐 ARQUITETURA DE APIs - DEV/HOMOLOG" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontSize=18;fontStyle=1;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="1080" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- API Gateway Layer -->
+        <mxCell id="gateway-layer" value="🚪 API GATEWAY LAYER" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="90" width="1040" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- Azure API Management -->
+        <mxCell id="apim" value="🔧 Azure API Management&#xa;┌─────────────────────────────────┐&#xa;│ 🏷️ Tier: Developer (DEV)       │&#xa;│ 🏷️ Tier: Basic (HOMOLOG)       │&#xa;│ 🌐 Gateway: apim-gateway.net    │&#xa;│ 🔐 Auth: OAuth 2.0 + JWT       │&#xa;│ 🛡️ Policies: Rate limit + CORS │&#xa;│ 📊 Analytics: Built-in         │&#xa;└─────────────────────────────────┘" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="80" y="130" width="240" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Load Balancer -->
+        <mxCell id="load-balancer" value="⚖️ Application Gateway&#xa;┌─────────────────────────────────┐&#xa;│ 🔄 Load Balancing: Round Robin  │&#xa;│ 🔒 SSL Termination: TLS 1.2    │&#xa;│ 🛡️ WAF: Web Application Firewall│&#xa;│ 📈 Health Probes: /health      │&#xa;│ 🌐 Public IP: Static           │&#xa;└─────────────────────────────────┘" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="340" y="130" width="240" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- API Security -->
+        <mxCell id="api-security" value="🔐 API Security Hub&#xa;┌─────────────────────────────────┐&#xa;│ 🎫 Azure AD B2C Integration    │&#xa;│ 🔑 JWT Token Validation        │&#xa;│ 🛡️ API Keys Management         │&#xa;│ 📋 Scope-based Authorization   │&#xa;│ 🔍 Audit Logging              │&#xa;└─────────────────────────────────┘" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="600" y="130" width="240" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Monitoring -->
+        <mxCell id="api-monitoring" value="📊 API Monitoring&#xa;┌─────────────────────────────────┐&#xa;│ 📈 Application Insights        │&#xa;│ 🚨 Alerts & Notifications      │&#xa;│ 📋 Performance Metrics         │&#xa;│ 🔍 Distributed Tracing         │&#xa;│ 📊 Custom Dashboards          │&#xa;└─────────────────────────────────┘" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc99;strokeColor=#ff6600;fontSize=10;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="860" y="130" width="200" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- API Services Layer -->
+        <mxCell id="services-layer" value="🏗️ API SERVICES LAYER" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="230" width="1040" height="200" as="geometry" />
+        </mxCell>
+        
+        <!-- User API -->
+        <mxCell id="user-api" value="👤 User Management API&#xa;┌─────────────────────────────────┐&#xa;│ 📍 Endpoint: /api/v1/users     │&#xa;│ 🔧 Methods: GET, POST, PUT, DEL │&#xa;│ 🗂️ Operations:                 │&#xa;│   • User Registration          │&#xa;│   • Profile Management         │&#xa;│   • Authentication             │&#xa;│   • Password Reset             │&#xa;│ 📊 Response: JSON              │&#xa;│ 🔒 Auth: Bearer Token          │&#xa;└─────────────────────────────────┘" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="80" y="270" width="200" height="140" as="geometry" />
+        </mxCell>
+        
+        <!-- Project API -->
+        <mxCell id="project-api" value="📋 Project Management API&#xa;┌─────────────────────────────────┐&#xa;│ 📍 Endpoint: /api/v1/projects  │&#xa;│ 🔧 Methods: GET, POST, PUT, DEL │&#xa;│ 🗂️ Operations:                 │&#xa;│   • Project Creation           │&#xa;│   • Task Management            │&#xa;│   • Status Updates             │&#xa;│   • Resource Allocation        │&#xa;│ 📊 Response: JSON              │&#xa;│ 🔒 Auth: Role-based            │&#xa;└─────────────────────────────────┘" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="300" y="270" width="200" height="140" as="geometry" />
+        </mxCell>
+        
+        <!-- Notification API -->
+        <mxCell id="notification-api" value="📧 Notification API&#xa;┌─────────────────────────────────┐&#xa;│ 📍 Endpoint: /api/v1/notify    │&#xa;│ 🔧 Methods: POST, GET          │&#xa;│ 🗂️ Operations:                 │&#xa;│   • Email Notifications        │&#xa;│   • SMS Notifications          │&#xa;│   • Push Notifications         │&#xa;│   • Notification History       │&#xa;│ 📊 Response: JSON              │&#xa;│ 🔒 Auth: API Key               │&#xa;└─────────────────────────────────┘" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="520" y="270" width="200" height="140" as="geometry" />
+        </mxCell>
+        
+        <!-- File API -->
+        <mxCell id="file-api" value="📁 File Management API&#xa;┌─────────────────────────────────┐&#xa;│ 📍 Endpoint: /api/v1/files     │&#xa;│ 🔧 Methods: POST, GET, DELETE   │&#xa;│ 🗂️ Operations:                 │&#xa;│   • File Upload                │&#xa;│   • File Download              │&#xa;│   • File Metadata             │&#xa;│   • File Security             │&#xa;│ 📊 Response: JSON/Binary       │&#xa;│ 🔒 Auth: Bearer + Scope        │&#xa;└─────────────────────────────────┘" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="740" y="270" width="200" height="140" as="geometry" />
+        </mxCell>
+        
+        <!-- Reports API -->
+        <mxCell id="reports-api" value="📊 Reports API&#xa;┌─────────────────────────────────┐&#xa;│ 📍 Endpoint: /api/v1/reports   │&#xa;│ 🔧 Methods: GET, POST          │&#xa;│ 🗂️ Operations:                 │&#xa;│   • Generate Reports           │&#xa;│   • Export Data               │&#xa;│   • Scheduled Reports         │&#xa;│   • Analytics Dashboard       │&#xa;│ 📊 Response: JSON/PDF/Excel    │&#xa;│ 🔒 Auth: Role-based            │&#xa;└─────────────────────────────────┘" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc99;strokeColor=#ff6600;fontSize=9;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="960" y="270" width="140" height="140" as="geometry" />
+        </mxCell>
+        
+        <!-- Data Layer -->
+        <mxCell id="data-layer" value="🗄️ DATA ACCESS LAYER" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="450" width="1040" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- Database Connections -->
+        <mxCell id="db-connections" value="🔗 Database Connections&#xa;┌─────────────────────────────────┐&#xa;│ 🗄️ SQL Database: Connection Pool│&#xa;│ 📊 Connection String: Encrypted │&#xa;│ 🔄 Retry Policy: Exponential    │&#xa;│ ⏱️ Timeout: 30 seconds         │&#xa;│ 📈 Max Pool Size: 100          │&#xa;└─────────────────────────────────┘" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="80" y="490" width="240" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Cache Layer -->
+        <mxCell id="cache-layer" value="⚡ Redis Cache&#xa;┌─────────────────────────────────┐&#xa;│ 💾 Azure Redis Cache: Basic    │&#xa;│ ⏱️ TTL: Configurable per key   │&#xa;│ 🔄 Invalidation: Event-driven  │&#xa;│ 📊 Hit Ratio: > 90%            │&#xa;│ 🔒 SSL: Required               │&#xa;└─────────────────────────────────┘" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="340" y="490" width="240" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Storage Accounts -->
+        <mxCell id="storage-accounts" value="📦 Storage Accounts&#xa;┌─────────────────────────────────┐&#xa;│ 📁 Blob Storage: Hot tier      │&#xa;│ 📋 Table Storage: Metadata     │&#xa;│ 📬 Queue Storage: Background    │&#xa;│ 🔒 Access: Private endpoints   │&#xa;│ 🔑 Auth: Managed Identity      │&#xa;└─────────────────────────────────┘" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="600" y="490" width="240" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- External Integrations -->
+        <mxCell id="external-integrations" value="🌐 External APIs&#xa;┌─────────────────────────────────┐&#xa;│ 📧 SendGrid: Email service     │&#xa;│ 💳 Payment Gateway: Stripe     │&#xa;│ 📍 Maps API: Azure Maps        │&#xa;│ 🔍 Search: Azure Cognitive     │&#xa;│ 🔒 Auth: OAuth 2.0             │&#xa;└─────────────────────────────────┘" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="860" y="490" width="200" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- API Versioning -->
+        <mxCell id="versioning" value="🏷️ API VERSIONING & DOCUMENTATION" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f0f0;strokeColor=#666666;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="590" width="1040" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- Version Strategy -->
+        <mxCell id="version-strategy" value="📋 Versioning Strategy&#xa;├── URL Versioning: /api/v1/, /api/v2/&#xa;├── Header Versioning: API-Version&#xa;├── Backward Compatibility: 2 versions&#xa;├── Deprecation Notice: 6 months&#xa;└── Breaking Changes: Major version" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="630" width="240" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Documentation -->
+        <mxCell id="documentation" value="📚 API Documentation&#xa;├── Swagger/OpenAPI 3.0&#xa;├── Interactive Testing: Swagger UI&#xa;├── Code Examples: Multiple languages&#xa;├── Postman Collections: Available&#xa;└── SDK Generation: Auto-generated" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="340" y="630" width="240" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Testing -->
+        <mxCell id="testing" value="🧪 API Testing&#xa;├── Unit Tests: 90%+ coverage&#xa;├── Integration Tests: Automated&#xa;├── Load Tests: Azure Load Testing&#xa;├── Security Tests: OWASP ZAP&#xa;└── Contract Tests: Pact framework" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="600" y="630" width="240" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Performance -->
+        <mxCell id="performance" value="⚡ Performance Metrics&#xa;├── Response Time: < 200ms (95th)&#xa;├── Throughput: 1000 RPS&#xa;├── Availability: 99.9%&#xa;├── Error Rate: < 0.1%&#xa;└── Cache Hit Ratio: > 90%" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc99;strokeColor=#ff6600;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="860" y="630" width="200" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Environment Configuration -->
+        <mxCell id="env-config" value="🌍 ENVIRONMENT CONFIGURATION" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="730" width="1040" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- DEV Config -->
+        <mxCell id="dev-config" value="🟢 DEV Environment&#xa;• APIM: Developer tier (1000 calls/month)&#xa;• Rate Limit: 10 calls/minute&#xa;• Auth: Basic API keys" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="770" width="200" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- HML Config -->
+        <mxCell id="hml-config" value="🟡 HOMOLOG Environment&#xa;• APIM: Basic tier (100K calls/month)&#xa;• Rate Limit: 100 calls/minute&#xa;• Auth: OAuth 2.0 + JWT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="300" y="770" width="200" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Production Config -->
+        <mxCell id="prod-config" value="🔴 PRODUCTION (Future)&#xa;• APIM: Standard tier (1M calls/month)&#xa;• Rate Limit: 1000 calls/minute&#xa;• Auth: Full OAuth 2.0 + mTLS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="520" y="770" width="200" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Cost Optimization -->
+        <mxCell id="cost-optimization" value="💰 Cost Optimization&#xa;• DEV: Developer tier ($0/month base)&#xa;• HML: Basic tier ($75/month)&#xa;• Shared App Service Plans" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="760" y="770" width="200" height="30" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

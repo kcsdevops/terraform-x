@@ -1,0 +1,12 @@
+Ambiente,Recurso,Custo_Original_USD,Custo_Original_BRL,Custo_Otimizado_USD,Custo_Otimizado_BRL,Economia_BRL
+DEV,SQL Database,4.99,25.95,4.99,25.95,0.00
+DEV,App Service,0.00,0.00,0.00,0.00,0.00
+DEV,Storage Account,2.00,10.40,1.00,5.20,5.20
+DEV,Application Insights,2.30,11.96,1.00,5.20,6.76
+HOMOLOG,SQL Database,15.00,78.00,15.00,78.00,0.00
+HOMOLOG,App Service,13.70,71.24,13.70,71.24,0.00
+HOMOLOG,Storage Account,3.50,18.20,2.00,10.40,7.80
+HOMOLOG,Application Insights,5.00,26.00,2.30,11.96,14.04
+OPERACIONAL,Backup SQL,8.00,41.60,3.00,15.60,26.00
+OPERACIONAL,Bandwidth,12.00,62.40,2.00,10.40,52.00
+OPERACIONAL,Monitoring,15.00,78.00,1.00,5.20,72.80

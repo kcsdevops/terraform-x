@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2025-08-15T15:40:00.000Z" agent="5.0" etag="database-arch" version="21.6.5" type="device">
+  <diagram name="Arquitetura-Banco-de-Dados" id="database-arch">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Title -->
+        <mxCell id="title" value="🗄️ ARQUITETURA DE BANCO DE DADOS - DEV/HOMOLOG" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontSize=18;fontStyle=1;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="1080" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Database Layer Overview -->
+        <mxCell id="db-overview" value="📊 DATABASE LAYER OVERVIEW" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="90" width="1040" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- SQL Server Logical -->
+        <mxCell id="sql-logical" value="🏗️ SQL Server Logical Architecture&#xa;├── Engine: SQL Server 2022&#xa;├── Edition: Basic/Standard&#xa;├── Collation: SQL_Latin1_General_CP1_CI_AS&#xa;└── Time Zone: UTC-3 (Brazil)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="130" width="300" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Backup Strategy -->
+        <mxCell id="backup-strategy" value="🔄 Backup Strategy&#xa;├── DEV: No backup (cost opt.)&#xa;├── HML: Auto backup 7 days&#xa;└── Recovery: Point-in-time" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="420" y="130" width="300" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Performance Tier -->
+        <mxCell id="perf-tier" value="⚡ Performance Tiers&#xa;├── DEV: 5 DTU (Basic)&#xa;├── HML: 10 DTU (S0)&#xa;└── IOPS: Shared pool" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc99;strokeColor=#ff6600;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="760" y="130" width="300" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- DEV Database Environment -->
+        <mxCell id="dev-db-env" value="🟢 DEV DATABASE ENVIRONMENT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=15;" vertex="1" parent="1">
+          <mxGeometry x="80" y="220" width="480" height="280" as="geometry" />
+        </mxCell>
+        
+        <!-- DEV SQL Server Details -->
+        <mxCell id="dev-sql-server" value="🗄️ SQL Server: dev-sqlsrv-min&#xa;┌─────────────────────────────────┐&#xa;│ 📍 Location: Brazil South       │&#xa;│ 🏷️ Version: 12.0               │&#xa;│ 🔐 Admin: devadmin              │&#xa;│ 🌐 FQDN: dev-sqlsrv-min.data...│&#xa;│ 🔒 TLS: 1.2 minimum            │&#xa;│ 🛡️ Firewall: Azure services    │&#xa;└─────────────────────────────────┘" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="100" y="260" width="200" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- DEV Database Details -->
+        <mxCell id="dev-database" value="📊 Database: dev-sqldb-min&#xa;┌─────────────────────────────────┐&#xa;│ 💾 Size: 2GB maximum           │&#xa;│ ⚡ DTU: 5 (Basic tier)         │&#xa;│ 🔄 Backup: None                │&#xa;│ 🌐 Collation: Default          │&#xa;│ 📈 Growth: Auto (10%)          │&#xa;│ 🔒 Encryption: TDE Enabled     │&#xa;│ 💰 Cost: ~$5/month            │&#xa;└─────────────────────────────────┘" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="320" y="260" width="200" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- DEV Connection String -->
+        <mxCell id="dev-connection" value="🔗 Connection Details&#xa;Server: dev-sqlsrv-min.database.windows.net&#xa;Database: dev-sqldb-min&#xa;Authentication: SQL Server Auth&#xa;Encrypt: True&#xa;TrustServerCertificate: False&#xa;Connection Timeout: 30&#xa;Command Timeout: 30&#xa;Pool Size: 100 connections" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="100" y="400" width="420" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- HOMOLOG Database Environment -->
+        <mxCell id="hml-db-env" value="�� HOMOLOG DATABASE ENVIRONMENT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=15;" vertex="1" parent="1">
+          <mxGeometry x="600" y="220" width="480" height="280" as="geometry" />
+        </mxCell>
+        
+        <!-- HML SQL Server Details -->
+        <mxCell id="hml-sql-server" value="🗄️ SQL Server: hml-sqlsrv-min&#xa;┌─────────────────────────────────┐&#xa;│ 📍 Location: Brazil South       │&#xa;│ 🏷️ Version: 12.0               │&#xa;│ 🔐 Admin: hmladmin              │&#xa;│ 🌐 FQDN: hml-sqlsrv-min.data...│&#xa;│ 🔒 TLS: 1.2 minimum            │&#xa;│ 🛡️ Firewall: Azure services    │&#xa;└─────────────────────────────────┘" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="620" y="260" width="200" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- HML Database Details -->
+        <mxCell id="hml-database" value="📊 Database: hml-sqldb-min&#xa;┌─────────────────────────────────┐&#xa;│ 💾 Size: 250GB maximum         │&#xa;│ ⚡ DTU: 10 (S0 tier)           │&#xa;│ 🔄 Backup: 7 days auto         │&#xa;│ 🌐 Collation: Default          │&#xa;│ 📈 Growth: Auto (10%)          │&#xa;│ 🔒 Encryption: TDE Enabled     │&#xa;│ 💰 Cost: ~$15/month           │&#xa;└─────────────────────────────────┘" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="840" y="260" width="200" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- HML Connection String -->
+        <mxCell id="hml-connection" value="🔗 Connection Details&#xa;Server: hml-sqlsrv-min.database.windows.net&#xa;Database: hml-sqldb-min&#xa;Authentication: SQL Server Auth + Azure AD&#xa;Encrypt: True&#xa;TrustServerCertificate: False&#xa;Connection Timeout: 30&#xa;Command Timeout: 60&#xa;Pool Size: 200 connections" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="620" y="400" width="420" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Database Schema Design -->
+        <mxCell id="schema-design" value="📋 DATABASE SCHEMA DESIGN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="520" width="1040" height="200" as="geometry" />
+        </mxCell>
+        
+        <!-- Core Tables -->
+        <mxCell id="core-tables" value="🗂️ Core Business Tables&#xa;├── Users (id, email, created_at)&#xa;├── Organizations (id, name, plan)&#xa;├── Projects (id, org_id, status)&#xa;├── Tasks (id, project_id, assignee)&#xa;├── Comments (id, task_id, user_id)&#xa;└── Audit_Log (id, table, action, user)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="560" width="240" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- Indexes Strategy -->
+        <mxCell id="indexes" value="📈 Indexing Strategy&#xa;├── Primary: Clustered (ID columns)&#xa;├── Foreign Keys: Non-clustered&#xa;├── Search: Full-text indexes&#xa;├── Performance: Query-specific&#xa;├── Maintenance: Auto-update stats&#xa;└── Monitoring: Index usage stats" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="340" y="560" width="240" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- Security Schema -->
+        <mxCell id="security-schema" value="🔒 Security & Permissions&#xa;├── Schema: dbo (default)&#xa;├── Users: Application users only&#xa;├── Roles: db_datareader, db_datawriter&#xa;├── Procedures: Parameterized queries&#xa;├── Views: Data abstraction layer&#xa;└── Encryption: TDE + Column-level" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="600" y="560" width="240" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- Monitoring -->
+        <mxCell id="db-monitoring" value="📊 Database Monitoring&#xa;├── Metrics: DTU, CPU, Memory&#xa;├── Queries: Slow query log&#xa;├── Connections: Active sessions&#xa;├── Storage: Used/Available space&#xa;├── Blocking: Lock monitoring&#xa;└── Alerts: Performance thresholds" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc99;strokeColor=#ff6600;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="860" y="560" width="200" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- Migration & Deployment -->
+        <mxCell id="migration" value="🚀 MIGRATION & DEPLOYMENT STRATEGY" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="740" width="1040" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Migration Tools -->
+        <mxCell id="migration-tools" value="🔧 Migration Tools&#xa;├── Entity Framework Migrations&#xa;├── SQL Scripts (versioned)&#xa;├── Flyway/Liquibase support&#xa;└── Rollback procedures" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="780" width="200" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- Environment Flow -->
+        <mxCell id="env-flow" value="🔄 Environment Flow&#xa;Local → DEV → HOMOLOG → PROD&#xa;Schema validation at each step" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="320" y="780" width="200" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- Data Seeding -->
+        <mxCell id="data-seeding" value="🌱 Data Seeding&#xa;DEV: Test data automated&#xa;HML: Production-like dataset" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="560" y="780" width="200" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- Performance Testing -->
+        <mxCell id="perf-testing" value="⚡ Performance Testing&#xa;Load testing with realistic data&#xa;Query optimization analysis" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc99;strokeColor=#ff6600;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="800" y="780" width="200" height="20" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

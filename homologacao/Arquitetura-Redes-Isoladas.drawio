@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2025-08-15T12:30:00.000Z" agent="5.0" etag="xyz" version="21.6.5" type="device">
+  <diagram name="Ambientes-Isolados" id="ambientes-isolados">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Azure Cloud Container -->
+        <mxCell id="azure-cloud" value="Azure Cloud - Brazil South" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=16;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="1080" height="740" as="geometry" />
+        </mxCell>
+        
+        <!-- Service Principal -->
+        <mxCell id="service-principal" value="Service Principal&#xa;sp-terraform-mvp-flex&#xa;🔐 Managed Authentication" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="200" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Remote State Storage -->
+        <mxCell id="remote-state" value="Remote State Storage&#xa;Storage Account: treinamenttos&#xa;📦 tfstate container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="880" y="60" width="220" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- DEV Environment -->
+        <mxCell id="dev-env" value="DESENVOLVIMENTO (DEV)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="180" width="480" height="260" as="geometry" />
+        </mxCell>
+        
+        <!-- DEV Resource Group -->
+        <mxCell id="dev-rg" value="Resource Group: dev-rg-min" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="210" width="180" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- DEV VNet -->
+        <mxCell id="dev-vnet" value="VNet: dev-vnet-isolated&#xa;Range: 10.100.0.0/16&#xa;🔒 Isolated Network" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="100" y="270" width="200" height="150" as="geometry" />
+        </mxCell>
+        
+        <!-- DEV Subnet -->
+        <mxCell id="dev-subnet" value="Subnet: dev-subnet-isolated&#xa;Range: 10.100.1.0/24&#xa;🛡️ NSG: dev-nsg-isolated" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="120" y="310" width="160" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- DEV SQL -->
+        <mxCell id="dev-sql" value="SQL Server: dev-sqlsrv-min&#xa;Database: dev-sqldb-min&#xa;SKU: Basic (5 DTU, 2GB)&#xa;💰 ~$5/mês" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="340" y="270" width="200" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- DEV Security Rules -->
+        <mxCell id="dev-security" value="🔒 Security Rules:&#xa;✅ HTTPS (443) - Internal only&#xa;✅ SQL (1433) - Subnet only&#xa;❌ Deny other environments" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc99;strokeColor=#ff6600;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="340" y="360" width="200" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- HOMOLOG Environment -->
+        <mxCell id="hml-env" value="HOMOLOGAÇÃO (HOMOLOG)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="600" y="180" width="480" height="260" as="geometry" />
+        </mxCell>
+        
+        <!-- HOMOLOG Resource Group -->
+        <mxCell id="hml-rg" value="Resource Group: hml-rg-min" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="210" width="180" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- HOMOLOG VNet -->
+        <mxCell id="hml-vnet" value="VNet: hml-vnet-isolated&#xa;Range: 10.200.0.0/16&#xa;🔒 Isolated Network" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="620" y="270" width="200" height="150" as="geometry" />
+        </mxCell>
+        
+        <!-- HOMOLOG Subnet -->
+        <mxCell id="hml-subnet" value="Subnet: hml-subnet-isolated&#xa;Range: 10.200.1.0/24&#xa;🛡️ NSG: hml-nsg-isolated" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="640" y="310" width="160" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- HOMOLOG SQL -->
+        <mxCell id="hml-sql" value="SQL Server: hml-sqlsrv-min&#xa;Database: hml-sqldb-min&#xa;SKU: S0 (10 DTU, 250GB)&#xa;💰 ~$15/mês" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="860" y="270" width="200" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- HOMOLOG Security Rules -->
+        <mxCell id="hml-security" value="🔒 Security Rules:&#xa;✅ HTTPS (443) - Internal only&#xa;✅ SQL (1433) - Subnet only&#xa;✅ Testing (8080) - Internal only&#xa;❌ Deny other environments" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc99;strokeColor=#ff6600;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="860" y="360" width="200" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Network Isolation -->
+        <mxCell id="isolation-barrier" value="🚫 NETWORK ISOLATION BARRIER" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ff6666;strokeColor=#ff0000;fontSize=12;fontStyle=1;rotation=90;" vertex="1" parent="1">
+          <mxGeometry x="575" y="280" width="40" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- Cost Summary -->
+        <mxCell id="cost-summary" value="💰 COST SUMMARY&#xa;&#xa;DEV Environment: ~$12/mês&#xa;├── SQL Basic: ~$5/mês&#xa;├── Networking: ~$3/mês&#xa;└── Storage: ~$4/mês&#xa;&#xa;HOMOLOG Environment: ~$22/mês&#xa;├── SQL S0: ~$15/mês&#xa;├── Networking: ~$3/mês&#xa;└── Storage: ~$4/mês&#xa;&#xa;🎯 TOTAL: ~$34/mês&#xa;💸 ECONOMIA: 94% vs anterior" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="480" width="300" height="280" as="geometry" />
+        </mxCell>
+        
+        <!-- Network Architecture -->
+        <mxCell id="network-arch" value="🌐 NETWORK ARCHITECTURE&#xa;&#xa;📍 Address Allocation:&#xa;├── DEV: 10.100.0.0/16&#xa;│   └── Subnet: 10.100.1.0/24&#xa;├── HOMOLOG: 10.200.0.0/16&#xa;│   └── Subnet: 10.200.1.0/24&#xa;&#xa;🔒 Security Features:&#xa;├── Network Security Groups (NSG)&#xa;├── Environment-specific rules&#xa;├── Deny cross-environment traffic&#xa;└── Allow internal communication only&#xa;&#xa;📦 State Management:&#xa;├── dev/terraform.tfstate&#xa;└── homolog/terraform.tfstate" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="480" width="300" height="280" as="geometry" />
+        </mxCell>
+        
+        <!-- Best Practices -->
+        <mxCell id="best-practices" value="✅ BEST PRACTICES APPLIED&#xa;&#xa;🔐 Security:&#xa;├── Managed Identity authentication&#xa;├── TLS 1.2 minimum&#xa;├── Transparent Data Encryption&#xa;└── Least privilege access&#xa;&#xa;💰 Cost Optimization:&#xa;├── Minimal SKUs for dev/test&#xa;├── Local redundant storage (LRS)&#xa;├── Basic tiers where appropriate&#xa;└── Auto-shutdown tags&#xa;&#xa;🏗️ Infrastructure:&#xa;├── Modular Terraform structure&#xa;├── Remote state management&#xa;├── Environment isolation&#xa;└── Consistent naming convention" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="760" y="480" width="320" height="280" as="geometry" />
+        </mxCell>
+        
+        <!-- Connections -->
+        <mxCell id="conn1" value="" style="endArrow=classic;html=1;strokeColor=#666666;strokeWidth=2;dashed=1;" edge="1" parent="1" source="service-principal" target="dev-env">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="300" as="sourcePoint" />
+            <mxPoint x="450" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="conn2" value="" style="endArrow=classic;html=1;strokeColor=#666666;strokeWidth=2;dashed=1;" edge="1" parent="1" source="service-principal" target="hml-env">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="300" as="sourcePoint" />
+            <mxPoint x="450" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="conn3" value="" style="endArrow=classic;html=1;strokeColor=#666666;strokeWidth=2;dashed=1;" edge="1" parent="1" source="dev-env" target="remote-state">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="300" as="sourcePoint" />
+            <mxPoint x="450" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="conn4" value="" style="endArrow=classic;html=1;strokeColor=#666666;strokeWidth=2;dashed=1;" edge="1" parent="1" source="hml-env" target="remote-state">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="300" as="sourcePoint" />
+            <mxPoint x="450" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

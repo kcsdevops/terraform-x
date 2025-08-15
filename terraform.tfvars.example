@@ -1,0 +1,67 @@
+# Exemplo de variáveis para uso com Terraform
+# Salve como terraform.tfvars ou copie para o ambiente desejado
+
+# Variáveis globais
+resource_group_name = "mvp-flex"
+location           = "brazilsouth"
+environment        = "dev"
+owner              = "seu_nome"
+resource_name      = "meu_projeto"
+tags = {
+  environment = "dev"
+  owner       = "seu_nome"
+  project     = "meu_projeto"
+}
+
+# Caminhos (paths) para módulos ou arquivos, se necessário
+# Exemplo:
+# module_path = "./modules/appservice"
+# network_path = "./modules/vnet"
+# storage_path = "./modules/storage"
+# Ajuste conforme a estrutura do seu projeto
+
+# App Service
+container_image         = "<imagem_do_container>"
+subnet_id              = "<id_da_subnet>"
+app_service_plan_name   = "appserviceplan-flex"
+core_name              = "core-app"
+history_name           = "history-app"
+master_name            = "master-app"
+sku_tier               = "Standard"
+sku_size               = "S1"
+
+# SQL
+sql_server_name        = "sql-flex-server"
+sql_database_name      = "sqldb-flex"
+administrator_login    = "sqladminuser"
+sku_name               = "S0"
+
+# Storage
+storage_account_name   = "stflexstorage"
+account_tier           = "Standard"
+account_replication_type = "LRS"
+blob_container_name    = "staticfiles"
+container_access_type  = "private"
+queue_name             = "mainqueue"
+
+# VNet
+vnet_name              = "vnet-flex"
+address_space          = ["10.0.0.0/16"]
+dns_servers            = []
+
+# Subnet
+subnet_name            = "subnet-flex"
+virtual_network_name   = "vnet-flex"
+address_prefixes       = ["10.0.1.0/24"]
+service_endpoints      = []
+delegation             = null
+nsg_name               = "nsg-flex"
+security_rules         = []
+
+# ACR
+acr_name               = "acrflex"
+sku                    = "Premium"
+
+# Private Endpoint
+pe_name                = "pe-acr-flex"
+acr_id                 = "<id_do_acr>"

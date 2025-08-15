@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2025-08-15T15:10:00.000Z" agent="5.0" etag="systems-arch" version="21.6.5" type="device">
+  <diagram name="Arquitetura-de-Sistemas" id="sistemas-arch">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Title -->
+        <mxCell id="title" value="🏗️ ARQUITETURA DE SISTEMAS - AMBIENTES DEV/HOMOLOG" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontSize=18;fontStyle=1;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="1080" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Presentation Layer -->
+        <mxCell id="presentation-layer" value="🎨 PRESENTATION LAYER" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="90" width="1040" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- Web Applications -->
+        <mxCell id="web-apps" value="🌐 Web Applications&#xa;├── React Frontend (SPA)&#xa;├── Angular Admin Panel&#xa;└── Mobile Web App" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="130" width="200" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Load Balancer -->
+        <mxCell id="sys-lb" value="⚖️ Application Load Balancer&#xa;├── SSL Termination&#xa;├── Health Checks&#xa;└── Session Affinity" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="320" y="130" width="200" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- CDN -->
+        <mxCell id="cdn" value="🚀 Azure CDN&#xa;├── Static Assets&#xa;├── Image Optimization&#xa;└── Global Distribution" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="560" y="130" width="200" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- API Management -->
+        <mxCell id="apim" value="🔌 API Management&#xa;├── Rate Limiting&#xa;├── API Versioning&#xa;└── Developer Portal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc99;strokeColor=#ff6600;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="800" y="130" width="200" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Application Layer -->
+        <mxCell id="application-layer" value="⚙️ APPLICATION LAYER" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="240" width="1040" height="180" as="geometry" />
+        </mxCell>
+        
+        <!-- DEV Environment Apps -->
+        <mxCell id="dev-apps" value="🟢 DEV APPLICATIONS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="280" width="480" height="130" as="geometry" />
+        </mxCell>
+        
+        <!-- DEV App Services -->
+        <mxCell id="dev-app-services" value="🔧 App Services (DEV)&#xa;├── Core API: dev-core-app&#xa;│   └── SKU: F1 (Free)&#xa;├── Auth Service: dev-auth-app&#xa;│   └── SKU: F1 (Free)&#xa;└── Background Jobs: dev-jobs-app&#xa;    └── SKU: F1 (Free)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="100" y="310" width="200" height="90" as="geometry" />
+        </mxCell>
+        
+        <!-- DEV Functions -->
+        <mxCell id="dev-functions" value="⚡ Azure Functions (DEV)&#xa;├── Plan: Consumption&#xa;├── Runtime: .NET 8&#xa;├── Triggers: HTTP, Timer&#xa;└── Cost: Pay-per-execution" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="320" y="310" width="220" height="90" as="geometry" />
+        </mxCell>
+        
+        <!-- HOMOLOG Environment Apps -->
+        <mxCell id="hml-apps" value="🟡 HOMOLOG APPLICATIONS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="600" y="280" width="480" height="130" as="geometry" />
+        </mxCell>
+        
+        <!-- HOMOLOG App Services -->
+        <mxCell id="hml-app-services" value="🔧 App Services (HML)&#xa;├── Core API: hml-core-app&#xa;│   └── SKU: B1 (Basic)&#xa;├── Auth Service: hml-auth-app&#xa;│   └── SKU: B1 (Basic)&#xa;└── Background Jobs: hml-jobs-app&#xa;    └── SKU: B1 (Basic)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="620" y="310" width="200" height="90" as="geometry" />
+        </mxCell>
+        
+        <!-- HOMOLOG Functions -->
+        <mxCell id="hml-functions" value="⚡ Azure Functions (HML)&#xa;├── Plan: Premium (EP1)&#xa;├── Runtime: .NET 8&#xa;├── Triggers: HTTP, Queue&#xa;└── Pre-warmed instances: 1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="840" y="310" width="220" height="90" as="geometry" />
+        </mxCell>
+        
+        <!-- Data Layer -->
+        <mxCell id="data-layer" value="🗄️ DATA LAYER" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="450" width="1040" height="200" as="geometry" />
+        </mxCell>
+        
+        <!-- DEV Data Services -->
+        <mxCell id="dev-data" value="🟢 DEV DATA SERVICES" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="490" width="480" height="150" as="geometry" />
+        </mxCell>
+        
+        <!-- DEV SQL Database -->
+        <mxCell id="dev-sql-detail" value="🗄️ SQL Database (DEV)&#xa;├── Server: dev-sqlsrv-min&#xa;├── Database: dev-sqldb-min&#xa;├── SKU: Basic (5 DTU)&#xa;├── Storage: 2GB&#xa;├── Backup: None&#xa;└── Cost: ~$5/mês" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="100" y="520" width="180" height="110" as="geometry" />
+        </mxCell>
+        
+        <!-- DEV Storage -->
+        <mxCell id="dev-storage-detail" value="💾 Storage Account (DEV)&#xa;├── Name: devstgmin&#xa;├── Tier: Standard&#xa;├── Replication: LRS&#xa;├── Access Tier: Hot&#xa;├── Containers: app, logs&#xa;└── Cost: ~$3/mês" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="300" y="520" width="180" height="110" as="geometry" />
+        </mxCell>
+        
+        <!-- HOMOLOG Data Services -->
+        <mxCell id="hml-data" value="🟡 HOMOLOG DATA SERVICES" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="600" y="490" width="480" height="150" as="geometry" />
+        </mxCell>
+        
+        <!-- HOMOLOG SQL Database -->
+        <mxCell id="hml-sql-detail" value="🗄️ SQL Database (HML)&#xa;├── Server: hml-sqlsrv-min&#xa;├── Database: hml-sqldb-min&#xa;├── SKU: S0 (10 DTU)&#xa;├── Storage: 250GB&#xa;├── Backup: 7 days&#xa;└── Cost: ~$15/mês" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="620" y="520" width="180" height="110" as="geometry" />
+        </mxCell>
+        
+        <!-- HOMOLOG Storage -->
+        <mxCell id="hml-storage-detail" value="💾 Storage Account (HML)&#xa;├── Name: hmlstgmin&#xa;├── Tier: Standard&#xa;├── Replication: LRS&#xa;├── Access Tier: Hot&#xa;├── Containers: app, logs, test&#xa;└── Cost: ~$4/mês" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="820" y="520" width="180" height="110" as="geometry" />
+        </mxCell>
+        
+        <!-- Cache Layer -->
+        <mxCell id="cache-layer" value="🚀 CACHE & MONITORING LAYER" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc99;strokeColor=#ff6600;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="680" width="1040" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- Redis Cache -->
+        <mxCell id="redis" value="⚡ Redis Cache&#xa;├── DEV: None (cost optimization)&#xa;└── HML: Basic C0 (250MB)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="720" width="200" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Application Insights -->
+        <mxCell id="app-insights" value="📊 Application Insights&#xa;├── DEV: Basic monitoring&#xa;└── HML: Standard monitoring" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="320" y="720" width="200" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Log Analytics -->
+        <mxCell id="log-analytics" value="📋 Log Analytics&#xa;├── Workspace: shared-logs&#xa;└── Retention: 30 days" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="560" y="720" width="200" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Key Vault -->
+        <mxCell id="key-vault" value="🔐 Key Vault&#xa;├── DEV: dev-keyvault&#xa;├── HML: hml-keyvault&#xa;└── Secrets: DB conn, API keys" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="800" y="720" width="200" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Data Flow Arrows -->
+        <mxCell id="flow1" value="" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;" edge="1" parent="1" source="dev-app-services" target="dev-sql-detail">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="400" as="sourcePoint" />
+            <mxPoint x="450" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="flow2" value="" style="endArrow=classic;html=1;strokeColor=#d79b00;strokeWidth=2;" edge="1" parent="1" source="hml-app-services" target="hml-sql-detail">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="400" as="sourcePoint" />
+            <mxPoint x="450" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

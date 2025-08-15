@@ -1,0 +1,26 @@
+# Configurações do Service Principal para Terraform
+# Adicione estas variáveis de ambiente para usar o Service Principal
+
+# Método 1: Variáveis de ambiente (recomendado para CI/CD)
+$env:ARM_CLIENT_ID = "19c3daec-d973-4271-bc26-64133ba0d560"
+$env:ARM_TENANT_ID = "06c3d16a-623f-4119-89ea-bd53f49060ea"  
+$env:ARM_SUBSCRIPTION_ID = "7a6dcb36-b062-4f1f-822c-43732b1f5707"
+$env:ARM_CLIENT_SECRET = "SEU_CLIENT_SECRET_AQUI"
+
+# Método 2: No provider.tf (não recomendado para produção)
+# provider "azurerm" {
+#   features {}
+#   client_id       = "19c3daec-d973-4271-bc26-64133ba0d560"
+#   tenant_id       = "06c3d16a-623f-4119-89ea-bd53f49060ea"
+#   subscription_id = "7a6dcb36-b062-4f1f-822c-43732b1f5707"
+#   client_secret   = "SEU_CLIENT_SECRET_AQUI"
+# }
+
+# Service Principal Details:
+# DisplayName: sp-terraform-mvp-flex
+# AppId: 19c3daec-d973-4271-bc26-64133ba0d560
+# ObjectId: dc6ebb6c-c272-4e93-866a-9d4c931428c6
+# TenantId: 06c3d16a-623f-4119-89ea-bd53f49060ea
+# SubscriptionId: 7a6dcb36-b062-4f1f-822c-43732b1f5707
+# Scope: /subscriptions/7a6dcb36-b062-4f1f-822c-43732b1f5707/resourceGroups/mvp-flex
+# Role: Contributor
