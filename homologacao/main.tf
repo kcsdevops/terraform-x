@@ -15,6 +15,6 @@ module "sql" {
   resource_group_name = "hml-rg-min"
   location            = "brazilsouth"
   administrator_login = "hmladmin"
-  sku_name            = "S0"  # Standard S0 - mínimo adequado para homolog
+  sku_name            = "S0" # Standard S0 - mínimo adequado para homolog
   tags                = module.tags_sql.tags
 }

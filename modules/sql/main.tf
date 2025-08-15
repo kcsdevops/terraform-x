@@ -14,10 +14,10 @@ resource "azurerm_mssql_server" "sql" {
 }
 
 resource "azurerm_mssql_database" "sqldb" {
-  name                = var.sql_database_name
-  
-  
+  name = var.sql_database_name
+
+
   server_id = azurerm_mssql_server.sql.id
-  sku_name            = var.sku_name
-  tags                = var.tags
+  sku_name  = var.sku_name
+  tags      = var.tags
 }

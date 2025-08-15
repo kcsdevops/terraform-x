@@ -1,0 +1,118 @@
+# OpenTelemetry Collector Configuration
+# This configuration enables APM and monitoring integration
+
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+  
+  prometheus:
+    config:
+      scrape_configs:
+        - job_name: 'otel-collector'
+          scrape_interval: 10s
+          static_configs:
+            - targets: ['0.0.0.0:8888']
+
+  jaeger:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:14250
+      thrift_http:
+        endpoint: 0.0.0.0:14268
+      thrift_compact:
+        endpoint: 0.0.0.0:6831
+
+  zipkin:
+    endpoint: 0.0.0.0:9411
+
+processors:
+  batch:
+    timeout: 1s
+    send_batch_size: 1024
+    send_batch_max_size: 2048
+
+  memory_limiter:
+    limit_mib: 512
+
+  resource:
+    attributes:
+      - key: service.namespace
+        value: "azure-container-apps"
+        action: upsert
+      - key: deployment.environment
+        from_attribute: "environment"
+        action: upsert
+
+  attributes:
+    actions:
+      - key: container.name
+        from_attribute: "k8s.container.name"
+        action: upsert
+      - key: pod.name
+        from_attribute: "k8s.pod.name"
+        action: upsert
+
+exporters:
+  # Azure Application Insights
+  azuremonitor:
+    connection_string: ""
+    
+  # Prometheus metrics export
+  prometheus:
+    endpoint: "0.0.0.0:8889"
+    namespace: "otel"
+    
+  # Local Prometheus push
+  prometheusremotewrite:
+    endpoint: "http://localhost:9090/api/v1/write"
+    timeout: 30s
+    
+  # Debug logging
+  logging:
+    loglevel: info
+    
+  # OTLP export (for chaining collectors)
+  otlp:
+    endpoint: "http://localhost:4317"
+    tls:
+      insecure: true
+
+extensions:
+  health_check:
+    endpoint: 0.0.0.0:13133
+    
+  pprof:
+    endpoint: 0.0.0.0:1777
+    
+  zpages:
+    endpoint: 0.0.0.0:55679
+
+service:
+  extensions: [health_check, pprof, zpages]
+  
+  pipelines:
+    traces:
+      receivers: [otlp, jaeger, zipkin]
+      processors: [memory_limiter, resource, attributes, batch]
+      exporters: [azuremonitor, logging]
+      
+    metrics:
+      receivers: [otlp, prometheus]
+      processors: [memory_limiter, resource, batch]
+      exporters: [azuremonitor, prometheus, prometheusremotewrite]
+      
+    logs:
+      receivers: [otlp]
+      processors: [memory_limiter, resource, batch]
+      exporters: [azuremonitor, logging]
+
+  telemetry:
+    logs:
+      level: "info"
+    metrics:
+      level: "basic"
+      address: "0.0.0.0:8888"

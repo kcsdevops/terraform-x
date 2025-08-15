@@ -4,15 +4,15 @@
 module "vnet" {
   source              = "../modules/vnet"
   vnet_name           = "hml-vnet-isolated"
-  address_space       = ["10.200.0.0/16"]  # Range específico para HOMOLOG
+  address_space       = ["10.200.0.0/16"] # Range específico para HOMOLOG
   location            = "brazilsouth"
   resource_group_name = "hml-rg-min"
   dns_servers         = []
   tags = {
-    environment = "homolog"
+    environment  = "homolog"
     network_tier = "isolated"
-    cost_tier = "minimal"
-    testing = "pre-prod"
+    cost_tier    = "minimal"
+    testing      = "pre-prod"
   }
 }
 
@@ -21,7 +21,7 @@ module "subnet" {
   subnet_name          = "hml-subnet-isolated"
   resource_group_name  = "hml-rg-min"
   virtual_network_name = module.vnet.vnet_name
-  address_prefixes     = ["10.200.1.0/24"]  # Subnet específica HOMOLOG
+  address_prefixes     = ["10.200.1.0/24"] # Subnet específica HOMOLOG
   nsg_name             = "hml-nsg-isolated"
   location             = "brazilsouth"
   service_endpoints    = []
@@ -35,7 +35,7 @@ module "subnet" {
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "443"
-      source_address_prefix      = "10.200.0.0/16"  # Só tráfego interno HOMOLOG
+      source_address_prefix      = "10.200.0.0/16" # Só tráfego interno HOMOLOG
       destination_address_prefix = "*"
     },
     {
@@ -46,7 +46,7 @@ module "subnet" {
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "1433"
-      source_address_prefix      = "10.200.1.0/24"  # Só da subnet HOMOLOG
+      source_address_prefix      = "10.200.1.0/24" # Só da subnet HOMOLOG
       destination_address_prefix = "*"
     },
     {
@@ -57,7 +57,7 @@ module "subnet" {
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "8080"
-      source_address_prefix      = "10.200.0.0/16"  # Porta para testes
+      source_address_prefix      = "10.200.0.0/16" # Porta para testes
       destination_address_prefix = "*"
     },
     {
@@ -68,7 +68,7 @@ module "subnet" {
       protocol                   = "*"
       source_port_range          = "*"
       destination_port_range     = "*"
-      source_address_prefix      = "10.0.0.0/8"     # Nega outros ranges 10.x
+      source_address_prefix      = "10.0.0.0/8" # Nega outros ranges 10.x
       destination_address_prefix = "*"
     }
   ]

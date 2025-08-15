@@ -15,6 +15,6 @@ module "sql" {
   resource_group_name = "dev-rg-min"
   location            = "brazilsouth"
   administrator_login = "devadmin"
-  sku_name            = "Basic"  # Basic tier - menor custo possível
+  sku_name            = "Basic" # Basic tier - menor custo possível
   tags                = module.tags_sql.tags
 }
