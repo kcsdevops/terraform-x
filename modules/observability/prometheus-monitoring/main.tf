@@ -44,7 +44,7 @@ locals {
 
 # Log Analytics Workspace for monitoring
 resource "azurerm_log_analytics_workspace" "monitoring" {
-  name                = "-Force{var.name_prefix}-law--Force{random_string.suffix.result}"
+  name                = "${var.name_prefix}-law-${random_string.suffix.result}"
   location            = local.resource_group.location
   resource_group_name = local.resource_group.name
   sku                 = var.log_analytics_sku
@@ -55,7 +55,7 @@ resource "azurerm_log_analytics_workspace" "monitoring" {
 
 # Application Insights for APM
 resource "azurerm_application_insights" "monitoring" {
-  name                = "-Force{var.name_prefix}-ai--Force{random_string.suffix.result}"
+  name                = "${var.name_prefix}-ai-${random_string.suffix.result}"
   location            = local.resource_group.location
   resource_group_name = local.resource_group.name
   workspace_id        = azurerm_log_analytics_workspace.monitoring.id
@@ -66,7 +66,7 @@ resource "azurerm_application_insights" "monitoring" {
 
 # User Assigned Managed Identity
 resource "azurerm_user_assigned_identity" "monitoring" {
-  name                = "-Force{var.name_prefix}-identity--Force{random_string.suffix.result}"
+  name                = "${var.name_prefix}-identity-${random_string.suffix.result}"
   location            = local.resource_group.location
   resource_group_name = local.resource_group.name
 
@@ -75,7 +75,7 @@ resource "azurerm_user_assigned_identity" "monitoring" {
 
 # Key Vault for secrets management
 resource "azurerm_key_vault" "monitoring" {
-  name                = "-Force{var.name_prefix}-kv--Force{random_string.suffix.result}"
+  name                = "${var.name_prefix}-kv-${random_string.suffix.result}"
   location            = local.resource_group.location
   resource_group_name = local.resource_group.name
   tenant_id           = data.azurerm_client_config.current.tenant_id
@@ -107,7 +107,7 @@ data "azurerm_client_config" "current" {}
 # Virtual Network for Container App Environment
 resource "azurerm_virtual_network" "monitoring" {
   count               = var.create_vnet ? 1 : 0
-  name                = "-Force{var.name_prefix}-vnet--Force{random_string.suffix.result}"
+  name                = "${var.name_prefix}-vnet-${random_string.suffix.result}"
   location            = local.resource_group.location
   resource_group_name = local.resource_group.name
   address_space       = [var.vnet_address_space]
@@ -118,7 +118,7 @@ resource "azurerm_virtual_network" "monitoring" {
 # Subnet for Container App Environment
 resource "azurerm_subnet" "monitoring" {
   count                = var.create_vnet ? 1 : 0
-  name                 = "-Force{var.name_prefix}-subnet-monitoring"
+  name                 = "${var.name_prefix}-subnet-monitoring"
   resource_group_name  = local.resource_group.name
   virtual_network_name = azurerm_virtual_network.monitoring[0].name
   address_prefixes     = [var.subnet_address_prefix]
@@ -133,7 +133,7 @@ resource "azurerm_subnet" "monitoring" {
 
 # Container App Environment
 resource "azurerm_container_app_environment" "monitoring" {
-  name                       = "-Force{var.name_prefix}-cae--Force{random_string.suffix.result}"
+  name                       = "${var.name_prefix}-cae-${random_string.suffix.result}"
   location                   = local.resource_group.location
   resource_group_name        = local.resource_group.name
   log_analytics_workspace_id = azurerm_log_analytics_workspace.monitoring.id
@@ -145,7 +145,7 @@ resource "azurerm_container_app_environment" "monitoring" {
 
 # Storage Account for Prometheus data persistence
 resource "azurerm_storage_account" "prometheus" {
-  name                     = "-Force{var.name_prefix}st-Force{random_string.suffix.result}"
+  name                     = "${var.name_prefix}st${random_string.suffix.result}"
   resource_group_name      = local.resource_group.name
   location                 = local.resource_group.location
   account_tier             = "Standard"
@@ -203,7 +203,7 @@ resource "azurerm_key_vault_secret" "grafana_admin_password" {
 
 # Prometheus Container App
 resource "azurerm_container_app" "prometheus" {
-  name                         = "-Force{var.name_prefix}-prometheus--Force{random_string.suffix.result}"
+  name                         = "${var.name_prefix}-prometheus-${random_string.suffix.result}"
   container_app_environment_id = azurerm_container_app_environment.monitoring.id
   resource_group_name          = local.resource_group.name
   revision_mode                = "Single"
@@ -408,7 +408,7 @@ resource "azurerm_container_app" "prometheus" {
 # Grafana Container App (separate instance for better performance)
 resource "azurerm_container_app" "grafana" {
   count                        = var.create_separate_grafana ? 1 : 0
-  name                         = "UTF8{var.name_prefix}-grafana-UTF8{random_string.suffix.result}"
+  name                         = "${var.name_prefix}-grafana-${random_string.suffix.result}"
   container_app_environment_id = azurerm_container_app_environment.monitoring.id
   resource_group_name          = local.resource_group.name
   revision_mode                = "Single"
@@ -449,7 +449,7 @@ resource "azurerm_container_app" "grafana" {
 
       env {
         name  = "GF_DATASOURCES_DEFAULT_URL"
-        value = "http://UTF8{azurerm_container_app.prometheus.latest_revision_fqdn}:9090"
+        value = "http://${azurerm_container_app.prometheus.latest_revision_fqdn}:9090"
       }
 
       env {
@@ -505,7 +505,7 @@ resource "azurerm_container_app" "grafana" {
 # Alert Manager Container App (optional)
 resource "azurerm_container_app" "alertmanager" {
   count                        = var.enable_alertmanager ? 1 : 0
-  name                         = "UTF8{var.name_prefix}-alertmanager-UTF8{random_string.suffix.result}"
+  name                         = "${var.name_prefix}-alertmanager-${random_string.suffix.result}"
   container_app_environment_id = azurerm_container_app_environment.monitoring.id
   resource_group_name          = local.resource_group.name
   revision_mode                = "Single"
@@ -580,7 +580,7 @@ resource "azurerm_role_assignment" "storage_contributor" {
 # Azure Monitor Private Link Scope (optional for private connectivity)
 resource "azurerm_monitor_private_link_scope" "monitoring" {
   count               = var.enable_private_link ? 1 : 0
-  name                = "UTF8{var.name_prefix}-ampls-UTF8{random_string.suffix.result}"
+  name                = "${var.name_prefix}-ampls-${random_string.suffix.result}"
   resource_group_name = local.resource_group.name
 
   tags = var.tags
@@ -588,7 +588,7 @@ resource "azurerm_monitor_private_link_scope" "monitoring" {
 
 resource "azurerm_monitor_private_link_scoped_service" "law" {
   count               = var.enable_private_link ? 1 : 0
-  name                = "UTF8{var.name_prefix}-ampls-law"
+  name                = "${var.name_prefix}-ampls-law"
   resource_group_name = local.resource_group.name
   scope_name          = azurerm_monitor_private_link_scope.monitoring[0].name
   linked_resource_id  = azurerm_log_analytics_workspace.monitoring.id
@@ -596,7 +596,7 @@ resource "azurerm_monitor_private_link_scoped_service" "law" {
 
 resource "azurerm_monitor_private_link_scoped_service" "ai" {
   count               = var.enable_private_link ? 1 : 0
-  name                = "UTF8{var.name_prefix}-ampls-ai"
+  name                = "${var.name_prefix}-ampls-ai"
   resource_group_name = local.resource_group.name
   scope_name          = azurerm_monitor_private_link_scope.monitoring[0].name
   linked_resource_id  = azurerm_application_insights.monitoring.id

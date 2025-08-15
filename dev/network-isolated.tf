@@ -5,8 +5,8 @@ module "vnet" {
   source              = "../modules/vnet"
   vnet_name           = "dev-vnet-isolated"
   address_space       = ["10.100.0.0/16"] # Range específico para DEV
-  location            = "brazilsouth"
-  resource_group_name = "dev-rg-min"
+  location            = azurerm_resource_group.main.location
+  resource_group_name = azurerm_resource_group.main.name
   dns_servers         = []
   tags = {
     environment  = "dev"
@@ -18,11 +18,11 @@ module "vnet" {
 module "subnet" {
   source               = "../modules/subnet"
   subnet_name          = "dev-subnet-isolated"
-  resource_group_name  = "dev-rg-min"
+  resource_group_name  = azurerm_resource_group.main.name
   virtual_network_name = module.vnet.vnet_name
   address_prefixes     = ["10.100.1.0/24"] # Subnet específica DEV
   nsg_name             = "dev-nsg-isolated"
-  location             = "brazilsouth"
+  location             = azurerm_resource_group.main.location
   service_endpoints    = []
   delegation           = []
   security_rules = [

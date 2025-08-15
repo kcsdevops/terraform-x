@@ -1,0 +1,30 @@
+# Observability & Security Configuration
+# Configuração completa de monitoramento e segurança
+
+# Data source para subscription atual
+data "azurerm_client_config" "current" {}
+
+# Log Analytics para centralizar todos os logs
+module "log_analytics" {
+  source = "../modules/observability/log-analytics"
+
+  resource_group_name = azurerm_resource_group.main.name
+  location           = azurerm_resource_group.main.location
+  name_prefix        = "dev-obs"
+  retention_days     = 30
+
+  tags = merge(module.tags_sql.tags_with_additional, {
+    Component = "Observability"
+    Service   = "LogAnalytics"
+  })
+}
+
+# Outputs básicos para começar
+output "observability_info" {
+  description = "Informações básicas de observabilidade"
+  value = {
+    log_analytics_workspace = module.log_analytics.workspace_id
+    application_insights    = module.log_analytics.application_insights_key
+    resource_group         = azurerm_resource_group.main.name
+  }
+}
