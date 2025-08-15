@@ -4,14 +4,14 @@
 module "vnet" {
   source              = "../modules/vnet"
   vnet_name           = "dev-vnet-isolated"
-  address_space       = ["10.100.0.0/16"]  # Range específico para DEV
+  address_space       = ["10.100.0.0/16"] # Range específico para DEV
   location            = "brazilsouth"
   resource_group_name = "dev-rg-min"
   dns_servers         = []
   tags = {
-    environment = "dev"
+    environment  = "dev"
     network_tier = "isolated"
-    cost_tier = "minimal"
+    cost_tier    = "minimal"
   }
 }
 
@@ -20,7 +20,7 @@ module "subnet" {
   subnet_name          = "dev-subnet-isolated"
   resource_group_name  = "dev-rg-min"
   virtual_network_name = module.vnet.vnet_name
-  address_prefixes     = ["10.100.1.0/24"]  # Subnet específica DEV
+  address_prefixes     = ["10.100.1.0/24"] # Subnet específica DEV
   nsg_name             = "dev-nsg-isolated"
   location             = "brazilsouth"
   service_endpoints    = []
@@ -34,7 +34,7 @@ module "subnet" {
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "443"
-      source_address_prefix      = "10.100.0.0/16"  # Só tráfego interno DEV
+      source_address_prefix      = "10.100.0.0/16" # Só tráfego interno DEV
       destination_address_prefix = "*"
     },
     {
@@ -45,7 +45,7 @@ module "subnet" {
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "1433"
-      source_address_prefix      = "10.100.1.0/24"  # Só da subnet DEV
+      source_address_prefix      = "10.100.1.0/24" # Só da subnet DEV
       destination_address_prefix = "*"
     },
     {
@@ -56,7 +56,7 @@ module "subnet" {
       protocol                   = "*"
       source_port_range          = "*"
       destination_port_range     = "*"
-      source_address_prefix      = "10.0.0.0/8"     # Nega outros ranges 10.x
+      source_address_prefix      = "10.0.0.0/8" # Nega outros ranges 10.x
       destination_address_prefix = "*"
     }
   ]

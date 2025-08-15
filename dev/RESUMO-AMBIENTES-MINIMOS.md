@@ -1,11 +1,11 @@
-# 📊 RESUMO: Ambientes Reconfigurados com Recursos Mínimos
+# RESUMO: Ambientes Reconfigurados com Recursos Mínimos
 
-## 🎯 Objetivo
+## Objetivo
 Recriar ambientes de **DEV** e **HOMOLOG** com menor custo possível mantendo funcionalidade.
 
-## 💰 Comparação de Custos (aproximado mensal em USD)
+## Comparação de Custos (aproximado mensal em USD)
 
-### ⚙️ DESENVOLVIMENTO (DEV)
+### DESENVOLVIMENTO (DEV)
 | Recurso | Antes (5k users) | Depois (Mínimo) | Economia |
 |---------|------------------|-----------------|----------|
 | **SQL Database** | GP_S_Gen5_2 (~) | Basic (~) | ~ |
@@ -14,7 +14,7 @@ Recriar ambientes de **DEV** e **HOMOLOG** com menor custo possível mantendo fu
 | **NSG** | Padrão (~) | Mínimo (~) | ~ |
 | **Total Estimado** | **~/mês** | **~/mês** | **~/mês** |
 
-### ⚙️ HOMOLOGAÇÃO (HOMOLOG)
+### HOMOLOGAÇÃO (HOMOLOG)
 | Recurso | SKU | Custo Estimado |
 |---------|-----|----------------|
 | **SQL Database** | S0 (10 DTU) | ~/mês |
@@ -23,9 +23,9 @@ Recriar ambientes de **DEV** e **HOMOLOG** com menor custo possível mantendo fu
 | **NSG** | Mínimo | ~/mês |
 | **Total Estimado** | | **~/mês** |
 
-## 🏗️ Arquitetura Implementada
+## Arquitetura Implementada
 
-### **🔧 DEV - Recursos Mínimos**
+### **DEV - Recursos Mínimos**
 `
 Resource Group: dev-rg-min
 ├── SQL Server: dev-sqlsrv-min
@@ -35,7 +35,7 @@ Resource Group: dev-rg-min
 └── NSG: dev-nsg-min
 `
 
-### **🔧 HOMOLOG - Recursos Otimizados**  
+### **HOMOLOG - Recursos Otimizados**  
 `
 Resource Group: hml-rg-min
 ├── SQL Server: hml-sqlsrv-min
@@ -45,31 +45,31 @@ Resource Group: hml-rg-min
 └── NSG: hml-nsg-min
 `
 
-## 📋 SKUs Selecionados para Otimização
+## SKUs Selecionados para Otimização
 
-### **🗄️ SQL Database**
+### **�SQL Database**
 - **DEV**: Basic (5 DTU, 2GB) - Ideal para desenvolvimento e testes básicos
 - **HOMOLOG**: S0 (10 DTU, 250GB) - Adequado para testes de integração
 
-### **🌐 Networking**
+### **Networking**
 - **Separação de Redes**: DEV (10.10.x.x) vs HOMOLOG (10.20.x.x)
 - **Subnets Mínimas**: /24 (254 IPs cada)
 - **NSGs Básicos**: Regras essenciais de segurança
 
-### **💾 Storage**
+### **� Storage**
 - **Tier**: Standard (mais econômico que Premium)
 - **Replicação**: LRS (Local Redundant Storage)
 - **Access Tier**: Hot (padrão para desenvolvimento)
 
-## 🔐 Configurações de Segurança Mantidas
+## Configurações de Segurança Mantidas
 
-✅ **TLS 1.2** mínimo para SQL Server
-✅ **Transparent Data Encryption** habilitado
-✅ **Network Security Groups** com regras básicas
-✅ **Tags de controle de custos** implementadas
-✅ **Backend remoto** separado por ambiente
+**TLS 1.2** mínimo para SQL Server
+**Transparent Data Encryption** habilitado
+**Network Security Groups** com regras básicas
+**Tags de controle de custos** implementadas
+**Backend remoto** separado por ambiente
 
-## 📝 Comandos para Deploy
+## Comandos para Deploy
 
 ### DEV:
 `ash
@@ -85,26 +85,26 @@ terraform plan
 terraform apply -auto-approve
 `
 
-## 🚨 Economia Total Estimada
+## � Economia Total Estimada
 - **Antes**: ~/mês (só DEV)
 - **Depois**: ~/mês (DEV + HOMOLOG)
-- **💰 ECONOMIA: ~/mês (~94% de redução)**
+- **ECONOMIA: ~/mês (~94% de redução)**
 
-## ⚠️ Limitações dos Recursos Mínimos
+## Limitações dos Recursos Mínimos
 
 ### **DEV (Basic)**
-- ❌ Sem backup automático de 7 dias
-- ❌ Limitado a 2GB de dados
-- ❌ Performance básica (5 DTU)
-- ✅ Ideal para desenvolvimento simples
+- Sem backup automático de 7 dias
+- Limitado a 2GB de dados
+- Performance básica (5 DTU)
+- Ideal para desenvolvimento simples
 
 ### **HOMOLOG (S0)**  
-- ✅ Backup automático de 7 dias
-- ✅ Até 250GB de dados
-- ✅ Performance adequada (10 DTU)
-- ✅ Ideal para testes de integração
+- Backup automático de 7 dias
+- Até 250GB de dados
+- Performance adequada (10 DTU)
+- Ideal para testes de integração
 
-## 📈 Próximos Passos
+## Próximos Passos
 1. **Deploy dos ambientes** com 	erraform apply
 2. **Monitoramento de custos** via Azure Cost Management
 3. **Auto-shutdown** configurado via tags
